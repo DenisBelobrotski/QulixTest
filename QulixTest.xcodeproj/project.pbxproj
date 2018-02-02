@@ -11,7 +11,26 @@
 		73056F982022F9A8001EE568 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73056F972022F9A8001EE568 /* MainViewController.swift */; };
 		73056F9D2022F9A9001EE568 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73056F9C2022F9A9001EE568 /* Assets.xcassets */; };
 		73056FA02022F9A9001EE568 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73056F9E2022F9A9001EE568 /* LaunchScreen.storyboard */; };
+		73FD17252024A60D00669B9D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73FD171C2024A50E00669B9D /* Alamofire.framework */; };
+		73FD17262024A60D00669B9D /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 73FD171C2024A50E00669B9D /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		73FD17272024A60D00669B9D /* SwiftGif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73FD171D2024A50F00669B9D /* SwiftGif.framework */; };
+		73FD17282024A60D00669B9D /* SwiftGif.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 73FD171D2024A50F00669B9D /* SwiftGif.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		73FD17292024A60D00669B9D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				73FD17262024A60D00669B9D /* Alamofire.framework in Embed Frameworks */,
+				73FD17282024A60D00669B9D /* SwiftGif.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		73056F922022F9A8001EE568 /* QulixTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QulixTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -20,6 +39,8 @@
 		73056F9C2022F9A9001EE568 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		73056F9F2022F9A9001EE568 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		73056FA12022F9A9001EE568 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		73FD171C2024A50E00669B9D /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
+		73FD171D2024A50F00669B9D /* SwiftGif.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftGif.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +48,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73FD17252024A60D00669B9D /* Alamofire.framework in Frameworks */,
+				73FD17272024A60D00669B9D /* SwiftGif.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -36,6 +59,7 @@
 		73056F892022F9A8001EE568 = {
 			isa = PBXGroup;
 			children = (
+				73FD171B2024A4A700669B9D /* Frameworks */,
 				73056F942022F9A8001EE568 /* QulixTest */,
 				73056F932022F9A8001EE568 /* Products */,
 			);
@@ -61,6 +85,15 @@
 			path = QulixTest;
 			sourceTree = "<group>";
 		};
+		73FD171B2024A4A700669B9D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				73FD171C2024A50E00669B9D /* Alamofire.framework */,
+				73FD171D2024A50F00669B9D /* SwiftGif.framework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,6 +104,7 @@
 				73056F8E2022F9A8001EE568 /* Sources */,
 				73056F8F2022F9A8001EE568 /* Frameworks */,
 				73056F902022F9A8001EE568 /* Resources */,
+				73FD17292024A60D00669B9D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -263,6 +297,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = QulixTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = by.denisbelobrotski.QulixTest;
@@ -277,6 +315,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = QulixTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = by.denisbelobrotski.QulixTest;
