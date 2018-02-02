@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import Alamofire
 
 class MainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     var collectionView: UICollectionView?
-    var gifs: [Gif] = data
+//    var gifs: [Gif] = data
+    var gifs: [[String: Any]] = [[String: Any]]()
     let cellId = "GifCell"
     let cellSpacing:CGFloat = 10
     let mainTitle = "Trendings"
@@ -42,6 +44,15 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         collectionView?.register(GifCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
         collectionView?.delegate = self
         collectionView?.dataSource = self
+        
+        Alamofire.request("https://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC&limit=5&rating=pg").responseJSON { (response) in
+            if let responseValue = response.result.value as! [String: Any]? {
+                if let responseGifs = responseValue["data"] as! [[String: Any]]? {
+                    self.gifs = responseGifs
+                    self.collectionView?.reloadData()
+                }
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,13 +63,18 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     //UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print(gifs.count)
         return gifs.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! GifCollectionViewCell
         cell.autolayoutCell()
-        cell.gif = gifs[indexPath.row]
+        if self.gifs.count > 0 {
+            let currentGif = self.gifs[indexPath.row]
+            print((currentGif["title"] as? String) ?? "")
+            cell.labelGifName.text = (currentGif["title"] as? String) ?? ""
+        }
         
         return cell
     }
