@@ -13,7 +13,6 @@ import SwiftGifOrigin
 class MainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     var collectionView: UICollectionView?
-//    var gifs: [Gif] = data
     var gifs: [[String: Any]] = [[String: Any]]()
     let cellId = "GifCell"
     let cellSpacing:CGFloat = 10
@@ -83,9 +82,11 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
 //                    print((image["width"] as? String) ?? "")
 //                    print((image["height"] as? String) ?? "")
                     if let gifUrl = image["url"] as? String {
-                        let gif = UIImage.gif(url: gifUrl)
-                        OperationQueue.main.addOperation {
-                            cell.imageView.image = gif
+                        DispatchQueue.global().async {
+                            let gif = UIImage.gif(url: gifUrl)
+                            DispatchQueue.main.async {
+                                cell.imageView.image = gif
+                            }
                         }
                     }
                 }

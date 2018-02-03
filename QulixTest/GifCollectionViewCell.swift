@@ -11,7 +11,7 @@ import UIKit
 class GifCollectionViewCell: UICollectionViewCell {
     
     let stackViewSpacing: CGFloat = 10
-    let imageViewMultiplier: CGFloat = 0.7
+    let imageViewMultiplier: CGFloat = 0.85
     let labelGifNameFontSize: CGFloat = 15
     var stackView: UIStackView = UIStackView()
     var imageView: UIImageView = UIImageView()
