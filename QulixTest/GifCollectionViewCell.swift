@@ -17,13 +17,6 @@ class GifCollectionViewCell: UICollectionViewCell {
     var imageView: UIImageView = UIImageView()
     var labelGifName: UILabel = UILabel()
     
-    var gif: Gif! {
-        didSet {
-            imageView.getImageFromURL(urlString: gif.imageURL ?? "")
-            labelGifName.text = gif.name ?? ""
-        }
-    }
-    
     func autolayoutCell() {
         self.backgroundColor = .black
         self.addSubview(stackView)

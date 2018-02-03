@@ -7,14 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5EE13C929981D15BE29F4BA9 /* Pods_QulixTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 387FEDB66BE991F5764260C5 /* Pods_QulixTest.framework */; };
 		73056F962022F9A8001EE568 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73056F952022F9A8001EE568 /* AppDelegate.swift */; };
 		73056F982022F9A8001EE568 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73056F972022F9A8001EE568 /* MainViewController.swift */; };
 		73056F9D2022F9A9001EE568 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73056F9C2022F9A9001EE568 /* Assets.xcassets */; };
 		73056FA02022F9A9001EE568 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73056F9E2022F9A9001EE568 /* LaunchScreen.storyboard */; };
 		739AD9532024C5EA0005DDB6 /* GifCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739AD9522024C5EA0005DDB6 /* GifCollectionViewCell.swift */; };
 		739AD9552024EA910005DDB6 /* Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739AD9542024EA910005DDB6 /* Gif.swift */; };
-		73FD17252024A60D00669B9D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73FD171C2024A50E00669B9D /* Alamofire.framework */; };
-		73FD17262024A60D00669B9D /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 73FD171C2024A50E00669B9D /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +23,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				73FD17262024A60D00669B9D /* Alamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -32,6 +30,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0B720A9A13556D6F1691EC66 /* Pods-QulixTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QulixTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-QulixTest/Pods-QulixTest.release.xcconfig"; sourceTree = "<group>"; };
+		1083F16466E780B10001F804 /* Pods-QulixTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QulixTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QulixTest/Pods-QulixTest.debug.xcconfig"; sourceTree = "<group>"; };
+		387FEDB66BE991F5764260C5 /* Pods_QulixTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QulixTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		73056F922022F9A8001EE568 /* QulixTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QulixTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73056F952022F9A8001EE568 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73056F972022F9A8001EE568 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -40,7 +41,6 @@
 		73056FA12022F9A9001EE568 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		739AD9522024C5EA0005DDB6 /* GifCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCollectionViewCell.swift; sourceTree = "<group>"; };
 		739AD9542024EA910005DDB6 /* Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gif.swift; sourceTree = "<group>"; };
-		73FD171C2024A50E00669B9D /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,19 +48,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73FD17252024A60D00669B9D /* Alamofire.framework in Frameworks */,
+				5EE13C929981D15BE29F4BA9 /* Pods_QulixTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E3A095F028AECE8BEE74B05 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1083F16466E780B10001F804 /* Pods-QulixTest.debug.xcconfig */,
+				0B720A9A13556D6F1691EC66 /* Pods-QulixTest.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		73056F892022F9A8001EE568 = {
 			isa = PBXGroup;
 			children = (
-				73FD171B2024A4A700669B9D /* Frameworks */,
 				73056F942022F9A8001EE568 /* QulixTest */,
 				73056F932022F9A8001EE568 /* Products */,
+				3E3A095F028AECE8BEE74B05 /* Pods */,
+				ED34BBF78D7018F8A3FE47AE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,12 +96,12 @@
 			path = QulixTest;
 			sourceTree = "<group>";
 		};
-		73FD171B2024A4A700669B9D /* Frameworks */ = {
+		ED34BBF78D7018F8A3FE47AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				73FD171C2024A50E00669B9D /* Alamofire.framework */,
+				387FEDB66BE991F5764260C5 /* Pods_QulixTest.framework */,
 			);
-			path = Frameworks;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -101,10 +111,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 73056FA42022F9A9001EE568 /* Build configuration list for PBXNativeTarget "QulixTest" */;
 			buildPhases = (
+				DE55FE1B2612F8018BF0B294 /* [CP] Check Pods Manifest.lock */,
 				73056F8E2022F9A8001EE568 /* Sources */,
 				73056F8F2022F9A8001EE568 /* Frameworks */,
 				73056F902022F9A8001EE568 /* Resources */,
 				73FD17292024A60D00669B9D /* Embed Frameworks */,
+				66D31D238D7DFB80D40283BB /* [CP] Embed Pods Frameworks */,
+				73A7DDB5250AF9562EF53BDB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -160,6 +173,64 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		66D31D238D7DFB80D40283BB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-QulixTest/Pods-QulixTest-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftGifOrigin/SwiftGifOrigin.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftGifOrigin.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QulixTest/Pods-QulixTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		73A7DDB5250AF9562EF53BDB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QulixTest/Pods-QulixTest-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DE55FE1B2612F8018BF0B294 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-QulixTest-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		73056F8E2022F9A8001EE568 /* Sources */ = {
@@ -296,6 +367,7 @@
 		};
 		73056FA52022F9A9001EE568 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1083F16466E780B10001F804 /* Pods-QulixTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -314,6 +386,7 @@
 		};
 		73056FA62022F9A9001EE568 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0B720A9A13556D6F1691EC66 /* Pods-QulixTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

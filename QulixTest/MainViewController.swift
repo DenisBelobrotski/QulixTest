@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SwiftGifOrigin
 
 class MainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
@@ -45,7 +46,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         collectionView?.delegate = self
         collectionView?.dataSource = self
         
-        Alamofire.request("https://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC&limit=5&rating=pg").responseJSON { (response) in
+        Alamofire.request("https://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC&limit=20&rating=pg").responseJSON { (response) in
             if let responseValue = response.result.value as! [String: Any]? {
                 if let responseGifs = responseValue["data"] as! [[String: Any]]? {
                     self.gifs = responseGifs
@@ -73,17 +74,24 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         if self.gifs.count > 0 {
             let currentGif = self.gifs[indexPath.row]
             print((currentGif["title"] as? String) ?? "")
-            print((currentGif["trending_datetime"] as? String) ?? "")
-            print((currentGif["rating"] as? String) ?? "")
+//            print((currentGif["trending_datetime"] as? String) ?? "")
+//            print((currentGif["rating"] as? String) ?? "")
             cell.labelGifName.text = (currentGif["title"] as? String) ?? ""
             if let images = currentGif["images"] as! [String: Any]? {
                 if let image = images["fixed_width"] as! [String: Any]? {
-                    print((image["url"] as? String) ?? "")
-                    print((image["width"] as? String) ?? "")
-                    print((image["height"] as? String) ?? "")
+//                    print((image["url"] as? String) ?? "")
+//                    print((image["width"] as? String) ?? "")
+//                    print((image["height"] as? String) ?? "")
+                    if let gifUrl = image["url"] as? String {
+                        let gif = UIImage.gif(url: gifUrl)
+                        OperationQueue.main.addOperation {
+                            cell.imageView.image = gif
+                        }
+                    }
                 }
             }
         }
+        print(indexPath.row)
         
         return cell
     }
