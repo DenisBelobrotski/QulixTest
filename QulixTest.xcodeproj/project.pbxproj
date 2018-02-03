@@ -15,8 +15,6 @@
 		739AD9552024EA910005DDB6 /* Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739AD9542024EA910005DDB6 /* Gif.swift */; };
 		73FD17252024A60D00669B9D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73FD171C2024A50E00669B9D /* Alamofire.framework */; };
 		73FD17262024A60D00669B9D /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 73FD171C2024A50E00669B9D /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		73FD17272024A60D00669B9D /* SwiftGif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73FD171D2024A50F00669B9D /* SwiftGif.framework */; };
-		73FD17282024A60D00669B9D /* SwiftGif.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 73FD171D2024A50F00669B9D /* SwiftGif.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,7 +25,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				73FD17262024A60D00669B9D /* Alamofire.framework in Embed Frameworks */,
-				73FD17282024A60D00669B9D /* SwiftGif.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -44,7 +41,6 @@
 		739AD9522024C5EA0005DDB6 /* GifCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCollectionViewCell.swift; sourceTree = "<group>"; };
 		739AD9542024EA910005DDB6 /* Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gif.swift; sourceTree = "<group>"; };
 		73FD171C2024A50E00669B9D /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
-		73FD171D2024A50F00669B9D /* SwiftGif.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftGif.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +49,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				73FD17252024A60D00669B9D /* Alamofire.framework in Frameworks */,
-				73FD17272024A60D00669B9D /* SwiftGif.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,7 +90,6 @@
 			isa = PBXGroup;
 			children = (
 				73FD171C2024A50E00669B9D /* Alamofire.framework */,
-				73FD171D2024A50F00669B9D /* SwiftGif.framework */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";

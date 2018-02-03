@@ -73,7 +73,16 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         if self.gifs.count > 0 {
             let currentGif = self.gifs[indexPath.row]
             print((currentGif["title"] as? String) ?? "")
+            print((currentGif["trending_datetime"] as? String) ?? "")
+            print((currentGif["rating"] as? String) ?? "")
             cell.labelGifName.text = (currentGif["title"] as? String) ?? ""
+            if let images = currentGif["images"] as! [String: Any]? {
+                if let image = images["fixed_width"] as! [String: Any]? {
+                    print((image["url"] as? String) ?? "")
+                    print((image["width"] as? String) ?? "")
+                    print((image["height"] as? String) ?? "")
+                }
+            }
         }
         
         return cell

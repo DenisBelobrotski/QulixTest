@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Alamofire
-import SwiftGif
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
