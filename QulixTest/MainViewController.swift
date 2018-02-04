@@ -7,16 +7,18 @@
 //
 
 import UIKit
-import Alamofire
 import SwiftGifOrigin
 
 class MainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-    var collectionView: UICollectionView?
-    var gifs: [[String: Any]] = [[String: Any]]()
-    let cellId = "GifCell"
-    let cellSpacing:CGFloat = 10
-    let mainTitle = "Trendings"
+    private var collectionView: UICollectionView?
+    private var trendingGifsContainer: TrendingGifsContainer? = nil
+    private let cellId = "GifCell"
+    private let cellSpacing:CGFloat = 10
+    private let mainTitle = "Trendings"
+    private let loadNextPageOffset = 10
+    
+    // MARK: - UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,14 +47,9 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         collectionView?.delegate = self
         collectionView?.dataSource = self
         
-        Alamofire.request("https://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC&limit=20&rating=pg").responseJSON { (response) in
-            if let responseValue = response.result.value as! [String: Any]? {
-                if let responseGifs = responseValue["data"] as! [[String: Any]]? {
-                    self.gifs = responseGifs
-                    self.collectionView?.reloadData()
-                }
-            }
-        }
+        trendingGifsContainer = TrendingGifsContainer(collectionView: collectionView)
+        trendingGifsContainer?.loadNextPage()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,50 +57,38 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         // Dispose of any resources that can be recreated.
     }
     
-    //UICollectionViewDataSource
+    // MARK: - UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(gifs.count)
-        return gifs.count
+        return trendingGifsContainer?.gifs.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! GifCollectionViewCell
         cell.autolayoutCell()
-        if self.gifs.count > 0 {
-            let currentGif = self.gifs[indexPath.row]
-            print((currentGif["title"] as? String) ?? "")
-//            print((currentGif["trending_datetime"] as? String) ?? "")
-//            print((currentGif["rating"] as? String) ?? "")
-            cell.labelGifName.text = (currentGif["title"] as? String) ?? ""
-            if let images = currentGif["images"] as! [String: Any]? {
-                if let image = images["fixed_width"] as! [String: Any]? {
-//                    print((image["url"] as? String) ?? "")
-//                    print((image["width"] as? String) ?? "")
-//                    print((image["height"] as? String) ?? "")
-                    if let gifUrl = image["url"] as? String {
-                        DispatchQueue.global().async {
-                            let gif = UIImage.gif(url: gifUrl)
-                            DispatchQueue.main.async {
-                                cell.imageView.image = gif
-                            }
-                        }
-                    }
-                }
-            }
+        if let trendingGifsContainer = trendingGifsContainer {
+            trendingGifsContainer.fillCell(cell, atIndexPath: indexPath)
         }
-        print(indexPath.row)
         
         return cell
     }
     
-    //UICollectionViewDelegateFlowLayout
+    // MARK: - UICollectionViewDelegateFlowLayout
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (UIScreen.main.bounds.size.width - 3 * cellSpacing) / 2
         let height = width
         return CGSize(width: width, height: height)
     }
-
+    
+    // MARK: - UICollectionViewDelegate
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let trendingGifsContainer = trendingGifsContainer {
+            if indexPath.row == (trendingGifsContainer.gifs.count - 1 - loadNextPageOffset) {
+                trendingGifsContainer.loadNextPage()
+            }
+        }
+    }
 
 }

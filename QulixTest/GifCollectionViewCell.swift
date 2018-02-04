@@ -10,10 +10,10 @@ import UIKit
 
 class GifCollectionViewCell: UICollectionViewCell {
     
-    let stackViewSpacing: CGFloat = 10
-    let imageViewMultiplier: CGFloat = 0.85
-    let labelGifNameFontSize: CGFloat = 15
-    var stackView: UIStackView = UIStackView()
+    private let stackViewSpacing: CGFloat = 10
+    private let imageViewMultiplier: CGFloat = 0.8
+    private let labelGifNameFontSize: CGFloat = 15
+    private var stackView: UIStackView = UIStackView()
     var imageView: UIImageView = UIImageView()
     var labelGifName: UILabel = UILabel()
     
