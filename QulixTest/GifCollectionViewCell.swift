@@ -1,11 +1,3 @@
-//
-//  GifCollectionViewCell.swift
-//  QulixTest
-//
-//  Created by Denis Belobrotski on 02.02.2018.
-//  Copyright © 2018 Denis Belobrotski. All rights reserved.
-//
-
 import UIKit
 
 class GifCollectionViewCell: UICollectionViewCell {

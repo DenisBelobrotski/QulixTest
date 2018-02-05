@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  QulixTest
-//
-//  Created by Denis Belobrotski on 31.01.2018.
-//  Copyright © 2018 Denis Belobrotski. All rights reserved.
-//
-
 import UIKit
 import Alamofire
 
