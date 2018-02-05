@@ -14,6 +14,7 @@ class SearchViewController: BaseViewController {
         didSet {
             gifsContainer?.reset()
             gifsContainer?.loadNextPage(query: query)
+            self.title = query
         }
     }
     

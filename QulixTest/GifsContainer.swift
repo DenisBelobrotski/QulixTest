@@ -38,7 +38,6 @@ class GifsContainer {
             urlRequest += "trending?"
         }
         urlRequest += "limit=\(limit)&offset=\(gifs.count)&rating=\(rating)&api_key=\(apiKey)"
-//        print(urlRequest)
         loadGifs(urlRequest: urlRequest)
     }
     
@@ -47,12 +46,6 @@ class GifsContainer {
             if let responseValue = response.result.value as! [String: Any]? {
                 if let pagination = responseValue["pagination"] as! [String: Any]? {
                     let responseGifsCount = (pagination["count"] as? Int) ?? 0
-                    
-                    //                    print((pagination["total_count"] as? Int) ?? 0)
-                    //                    print((pagination["count"] as? Int) ?? 0)
-                    //                    print((pagination["offset"] as? Int) ?? 0)
-                    //                    print()
-                    
                     if responseGifsCount != 0 {
                         if let responseGifs = responseValue["data"] as! [[String: Any]]? {
                             let indexPaths = self.getIndexPaths(offset: self.gifs.count, limit: self.limit)
@@ -68,13 +61,15 @@ class GifsContainer {
     func fillCell(_ cell: GifCollectionViewCell, atIndexPath indexPath: IndexPath) {
         if self.gifs.count > 0 {
             let currentGif = self.gifs[indexPath.row]
-//            print((currentGif["trending_datetime"] as? String) ?? "")
-//            print((currentGif["rating"] as? String) ?? "")
-            cell.labelGifName.text = (currentGif["title"] as? String) ?? ""
+            if let trendingDatetime = currentGif["trending_datetime"] as? String {
+                if trendingDatetime != "" && trendingDatetime != "0000-00-00 00:00:00" && trendingDatetime != "1970-01-01 00:00:00" {
+                    cell.labelTrendedGif.text = "This gif was in trendings"
+                } else {
+                    cell.labelTrendedGif.text = ""
+                }
+            }
             if let images = currentGif["images"] as! [String: Any]? {
                 if let image = images["fixed_width"] as! [String: Any]? {
-//                    print((image["width"] as? String) ?? "")
-//                    print((image["height"] as? String) ?? "")
                     if let gifUrl = image["url"] as? String {
                         DispatchQueue.global().async {
                             let gif = UIImage.gif(url: gifUrl)

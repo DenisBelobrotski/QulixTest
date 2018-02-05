@@ -10,12 +10,12 @@ import UIKit
 
 class GifCollectionViewCell: UICollectionViewCell {
     
-    private let stackViewSpacing: CGFloat = 10
-    private let imageViewMultiplier: CGFloat = 0.8
-    private let labelGifNameFontSize: CGFloat = 15
+//    private let stackViewSpacing: CGFloat = 10
+    private let imageViewMultiplier: CGFloat = 0.9
+    private let labelTrendedGifFontSize: CGFloat = 12
     private var stackView: UIStackView = UIStackView()
     var imageView: UIImageView = UIImageView()
-    var labelGifName: UILabel = UILabel()
+    var labelTrendedGif: UILabel = UILabel()
     
     func autolayoutCell() {
         self.backgroundColor = .black
@@ -31,15 +31,16 @@ class GifCollectionViewCell: UICollectionViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.heightAnchor.constraint(equalTo: stackView.heightAnchor, multiplier: imageViewMultiplier).isActive = true
         
-        labelGifName.translatesAutoresizingMaskIntoConstraints = false
-        labelGifName.font = .boldSystemFont(ofSize: 15)
-        labelGifName.textColor = .white
-        stackView.addArrangedSubview(labelGifName)
+        labelTrendedGif.translatesAutoresizingMaskIntoConstraints = false
+//        labelTrendedGif.font = .boldSystemFont(ofSize: 15)
+        labelTrendedGif.font = .italicSystemFont(ofSize: labelTrendedGifFontSize)
+        labelTrendedGif.textColor = .lightGray
+        stackView.addArrangedSubview(labelTrendedGif)
         
         stackView.axis = .vertical
         stackView.alignment = .leading
         stackView.distribution = .equalSpacing
-        stackView.spacing = stackViewSpacing
+//        stackView.spacing = stackViewSpacing
     }
     
 }

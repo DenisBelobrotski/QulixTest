@@ -22,10 +22,6 @@ class BaseViewController: UIViewController, UICollectionViewDelegate, UICollecti
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //        navigationController?.navigationBar.barTintColor = .black
-        //        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-        //        self.navigationController?.isNavigationBarHidden = true
-        
         collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewLayout())
         collectionView?.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(collectionView!)
@@ -44,10 +40,6 @@ class BaseViewController: UIViewController, UICollectionViewDelegate, UICollecti
         collectionView?.register(GifCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
         collectionView?.delegate = self
         collectionView?.dataSource = self
-        
-//        trendingGifsContainer = GifsContainer(collectionView: collectionView)
-//        trendingGifsContainer?.loadNextPage()
-        
     }
     
     override func didReceiveMemoryWarning() {
