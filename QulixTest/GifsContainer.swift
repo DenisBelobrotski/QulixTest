@@ -9,13 +9,16 @@
 import UIKit
 import Alamofire
 
-class TrendingGifsContainer {
+class GifsContainer {
     
     let limit: Int
     let rating: String
+    let url: String = "https://api.giphy.com/v1/gifs/"
+    let apiKey = "dc6zaTOxFJmzC"
+    
     var gifs: [[String: Any]] = [[String: Any]]()
-    var standartRequest: String = "https://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC"
     var collectionView: UICollectionView?
+    var query: String? = nil
     
     init(collectionView: UICollectionView?, limit: Int = 20, rating: String = "pg") {
         self.limit = limit
@@ -23,16 +26,28 @@ class TrendingGifsContainer {
         self.collectionView = collectionView
     }
     
-    func loadNextPage() {
-        Alamofire.request(standartRequest + "&limit=\(limit)&offset=\(gifs.count)&rating=\(rating)").responseJSON { (response) in
+    func loadNextPage(query: String? = nil) {
+        var urlRequest = url
+        if let query = query {
+            urlRequest += "search?q=\(query)&"
+        } else {
+            urlRequest += "trending?"
+        }
+        urlRequest += "limit=\(limit)&offset=\(gifs.count)&rating=\(rating)&api_key=\(apiKey)"
+//        print(urlRequest)
+        loadGifs(urlRequest: urlRequest)
+    }
+    
+    private func loadGifs(urlRequest: String) {
+        Alamofire.request(urlRequest).responseJSON { (response) in
             if let responseValue = response.result.value as! [String: Any]? {
                 if let pagination = responseValue["pagination"] as! [String: Any]? {
                     let responseGifsCount = (pagination["count"] as? Int) ?? 0
                     
-//                    print((pagination["total_count"] as? Int) ?? 0)
-//                    print((pagination["count"] as? Int) ?? 0)
-//                    print((pagination["offset"] as? Int) ?? 0)
-//                    print()
+                    //                    print((pagination["total_count"] as? Int) ?? 0)
+                    //                    print((pagination["count"] as? Int) ?? 0)
+                    //                    print((pagination["offset"] as? Int) ?? 0)
+                    //                    print()
                     
                     if responseGifsCount != 0 {
                         if let responseGifs = responseValue["data"] as! [[String: Any]]? {

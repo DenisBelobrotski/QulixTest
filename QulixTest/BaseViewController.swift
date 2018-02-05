@@ -9,24 +9,22 @@
 import UIKit
 import SwiftGifOrigin
 
-class MainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-
-    private var collectionView: UICollectionView?
-    private var trendingGifsContainer: TrendingGifsContainer? = nil
+class BaseViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    var collectionView: UICollectionView?
+    var trendingGifsContainer: GifsContainer? = nil
     private let cellId = "GifCell"
     private let cellSpacing:CGFloat = 10
-    private let mainTitle = "Trendings"
-    private let loadNextPageOffset = 10
+    let nextPageOffset = 6
     
     // MARK: - UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = mainTitle
-//        navigationController?.navigationBar.barTintColor = .black
-//        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-//        self.navigationController?.isNavigationBarHidden = true
+        //        navigationController?.navigationBar.barTintColor = .black
+        //        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        //        self.navigationController?.isNavigationBarHidden = true
         
         collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewLayout())
         collectionView?.translatesAutoresizingMaskIntoConstraints = false
@@ -47,11 +45,11 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         collectionView?.delegate = self
         collectionView?.dataSource = self
         
-        trendingGifsContainer = TrendingGifsContainer(collectionView: collectionView)
-        trendingGifsContainer?.loadNextPage()
+        trendingGifsContainer = GifsContainer(collectionView: collectionView)
+//        trendingGifsContainer?.loadNextPage()
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -85,10 +83,11 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if let trendingGifsContainer = trendingGifsContainer {
-            if indexPath.row == (trendingGifsContainer.gifs.count - 1 - loadNextPageOffset) {
+            if indexPath.row == (trendingGifsContainer.gifs.count - 1 - nextPageOffset) {
                 trendingGifsContainer.loadNextPage()
             }
         }
     }
-
+    
 }
+
