@@ -10,9 +10,12 @@ import UIKit
 
 class TrendingsViewController: BaseViewController, UISearchControllerDelegate, UISearchBarDelegate {
     
+    // MARK: - Properties
+    
     var searchViewController: SearchViewController = SearchViewController()
     var searchNavigationController: UINavigationController?
     let searchController = UISearchController(searchResultsController: nil)
+    
     
     // MARK: - UIViewController
     
@@ -34,11 +37,7 @@ class TrendingsViewController: BaseViewController, UISearchControllerDelegate, U
         
         searchNavigationController = UINavigationController(rootViewController: searchViewController)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
     
     // MARK: - UISearchBarDelegate
     

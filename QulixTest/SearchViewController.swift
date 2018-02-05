@@ -10,6 +10,8 @@ import UIKit
 
 class SearchViewController: BaseViewController {
     
+    // MARK: - Properties
+    
     var query: String? {
         didSet {
             gifsContainer?.reset()
@@ -17,6 +19,7 @@ class SearchViewController: BaseViewController {
             self.title = query
         }
     }
+    
     
     // MARK: - UIViewController
     
@@ -29,10 +32,6 @@ class SearchViewController: BaseViewController {
         navigationItem.leftBarButtonItem = backButton
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     // MARK: - UICollectionViewDelegate
     
@@ -44,7 +43,10 @@ class SearchViewController: BaseViewController {
         }
     }
     
-    @objc func goBack() {
+    
+    // MARK: - Private methods
+    
+    @objc private func goBack() {
         dismiss(animated: true, completion: nil)
     }
     

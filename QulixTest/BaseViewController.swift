@@ -11,11 +11,14 @@ import SwiftGifOrigin
 
 class BaseViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    // MARK: - Properties
+    
     var collectionView: UICollectionView?
     var gifsContainer: GifsContainer? = nil
     private let cellId = "GifCell"
     private let cellSpacing:CGFloat = 10
     let nextPageOffset = 6
+    
     
     // MARK: - UIViewController
     
@@ -42,10 +45,6 @@ class BaseViewController: UIViewController, UICollectionViewDelegate, UICollecti
         collectionView?.dataSource = self
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     // MARK: - UICollectionViewDataSource
     
@@ -63,6 +62,7 @@ class BaseViewController: UIViewController, UICollectionViewDelegate, UICollecti
         return cell
     }
     
+    
     // MARK: - UICollectionViewDelegateFlowLayout
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -70,6 +70,7 @@ class BaseViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let height = width
         return CGSize(width: width, height: height)
     }
+    
     
     // MARK: - UICollectionViewDelegate
     

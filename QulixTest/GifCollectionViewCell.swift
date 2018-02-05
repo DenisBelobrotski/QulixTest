@@ -10,11 +10,17 @@ import UIKit
 
 class GifCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - Properties
+    
     private let imageViewMultiplier: CGFloat = 0.9
     private let labelTrendedGifFontSize: CGFloat = 12
+    
     private var stackView: UIStackView = UIStackView()
     var imageView: UIImageView = UIImageView()
     var labelTrendedGif: UILabel = UILabel()
+    
+    
+    // MARK: - Internal methods
     
     func autolayoutCell() {
         self.backgroundColor = .black
