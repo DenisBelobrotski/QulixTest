@@ -12,7 +12,7 @@ import SwiftGifOrigin
 class BaseViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var collectionView: UICollectionView?
-    var trendingGifsContainer: GifsContainer? = nil
+    var gifsContainer: GifsContainer? = nil
     private let cellId = "GifCell"
     private let cellSpacing:CGFloat = 10
     let nextPageOffset = 6
@@ -45,7 +45,7 @@ class BaseViewController: UIViewController, UICollectionViewDelegate, UICollecti
         collectionView?.delegate = self
         collectionView?.dataSource = self
         
-        trendingGifsContainer = GifsContainer(collectionView: collectionView)
+//        trendingGifsContainer = GifsContainer(collectionView: collectionView)
 //        trendingGifsContainer?.loadNextPage()
         
     }
@@ -58,13 +58,13 @@ class BaseViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // MARK: - UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return trendingGifsContainer?.gifs.count ?? 0
+        return gifsContainer?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! GifCollectionViewCell
         cell.autolayoutCell()
-        if let trendingGifsContainer = trendingGifsContainer {
+        if let trendingGifsContainer = gifsContainer {
             trendingGifsContainer.fillCell(cell, atIndexPath: indexPath)
         }
         
@@ -82,8 +82,8 @@ class BaseViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // MARK: - UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if let trendingGifsContainer = trendingGifsContainer {
-            if indexPath.row == (trendingGifsContainer.gifs.count - 1 - nextPageOffset) {
+        if let trendingGifsContainer = gifsContainer {
+            if indexPath.row == (trendingGifsContainer.count - 1 - nextPageOffset) {
                 trendingGifsContainer.loadNextPage()
             }
         }

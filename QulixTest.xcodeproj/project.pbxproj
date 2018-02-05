@@ -14,6 +14,7 @@
 		73056FA02022F9A9001EE568 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73056F9E2022F9A9001EE568 /* LaunchScreen.storyboard */; };
 		736BF59D20277F9C005A5B2D /* GifsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736BF59C20277F9C005A5B2D /* GifsContainer.swift */; };
 		736BF59F2027CED4005A5B2D /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736BF59E2027CED4005A5B2D /* BaseViewController.swift */; };
+		736BF5A12027D938005A5B2D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736BF5A02027D938005A5B2D /* SearchViewController.swift */; };
 		739AD9532024C5EA0005DDB6 /* GifCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739AD9522024C5EA0005DDB6 /* GifCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,7 @@
 		73056FA12022F9A9001EE568 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		736BF59C20277F9C005A5B2D /* GifsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifsContainer.swift; sourceTree = "<group>"; };
 		736BF59E2027CED4005A5B2D /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		736BF5A02027D938005A5B2D /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		739AD9522024C5EA0005DDB6 /* GifCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,6 +92,7 @@
 				73056F952022F9A8001EE568 /* AppDelegate.swift */,
 				736BF59E2027CED4005A5B2D /* BaseViewController.swift */,
 				73056F972022F9A8001EE568 /* TrendingsViewController.swift */,
+				736BF5A02027D938005A5B2D /* SearchViewController.swift */,
 				739AD9522024C5EA0005DDB6 /* GifCollectionViewCell.swift */,
 				736BF59C20277F9C005A5B2D /* GifsContainer.swift */,
 				73056F9C2022F9A9001EE568 /* Assets.xcassets */,
@@ -240,6 +243,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				736BF5A12027D938005A5B2D /* SearchViewController.swift in Sources */,
 				736BF59F2027CED4005A5B2D /* BaseViewController.swift in Sources */,
 				739AD9532024C5EA0005DDB6 /* GifCollectionViewCell.swift in Sources */,
 				73056F982022F9A8001EE568 /* TrendingsViewController.swift in Sources */,

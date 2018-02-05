@@ -16,9 +16,13 @@ class GifsContainer {
     let url: String = "https://api.giphy.com/v1/gifs/"
     let apiKey = "dc6zaTOxFJmzC"
     
-    var gifs: [[String: Any]] = [[String: Any]]()
-    var collectionView: UICollectionView?
-    var query: String? = nil
+    private var gifs = [[String: Any]]()
+    private var collectionView: UICollectionView?
+    private var query: String? = nil
+    
+    var count: Int {
+        return gifs.count
+    }
     
     init(collectionView: UICollectionView?, limit: Int = 20, rating: String = "pg") {
         self.limit = limit
@@ -82,6 +86,12 @@ class GifsContainer {
                 }
             }
         }
+    }
+    
+    func reset() {
+        query = nil
+        gifs = [[String: Any]]()
+        collectionView?.reloadData()
     }
     
     private func getIndexPaths(offset: Int, limit: Int) -> [IndexPath] {
