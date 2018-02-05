@@ -10,7 +10,6 @@ import UIKit
 
 class GifCollectionViewCell: UICollectionViewCell {
     
-//    private let stackViewSpacing: CGFloat = 10
     private let imageViewMultiplier: CGFloat = 0.9
     private let labelTrendedGifFontSize: CGFloat = 12
     private var stackView: UIStackView = UIStackView()
@@ -32,7 +31,6 @@ class GifCollectionViewCell: UICollectionViewCell {
         imageView.heightAnchor.constraint(equalTo: stackView.heightAnchor, multiplier: imageViewMultiplier).isActive = true
         
         labelTrendedGif.translatesAutoresizingMaskIntoConstraints = false
-//        labelTrendedGif.font = .boldSystemFont(ofSize: 15)
         labelTrendedGif.font = .italicSystemFont(ofSize: labelTrendedGifFontSize)
         labelTrendedGif.textColor = .lightGray
         stackView.addArrangedSubview(labelTrendedGif)
@@ -40,7 +38,6 @@ class GifCollectionViewCell: UICollectionViewCell {
         stackView.axis = .vertical
         stackView.alignment = .leading
         stackView.distribution = .equalSpacing
-//        stackView.spacing = stackViewSpacing
     }
     
 }
