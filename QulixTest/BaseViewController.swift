@@ -82,5 +82,15 @@ class BaseViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
+    func showInternetConnectionErrorMessage() {
+        let alert = UIAlertController(title: "Error", message: "No Internet connection. Please, connect to the Internet and restart the app.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Exit", style: .default, handler: { action in
+            if action.style == .default {
+                UIControl().sendAction(#selector(URLSessionTask.suspend), to: UIApplication.shared, for: nil)
+            }
+        }))
+        present(alert, animated: true, completion: nil)
+    }
+    
 }
 

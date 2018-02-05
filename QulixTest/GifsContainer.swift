@@ -20,8 +20,8 @@ class GifsContainer {
     private let trendedGifDenotement = "This gif was in trendings"
     
     private var gifs = [[String: Any]]()
-    private var collectionView: UICollectionView?
     private var query: String? = nil
+    private var baseViewController: BaseViewController
     
     var count: Int {
         return gifs.count
@@ -30,10 +30,10 @@ class GifsContainer {
     
     // MARK: - Initialization
     
-    init(collectionView: UICollectionView?, limit: Int = 20, rating: String = "pg") {
+    init(baseViewController: BaseViewController, limit: Int = 20, rating: String = "pg") {
         self.limit = limit
         self.rating = rating
-        self.collectionView = collectionView
+        self.baseViewController = baseViewController
     }
     
     
@@ -78,25 +78,30 @@ class GifsContainer {
     func reset() {
         query = nil
         gifs = [[String: Any]]()
-        collectionView?.reloadData()
+        baseViewController.collectionView?.reloadData()
     }
     
     
     // MARK: - Private methods
     
     private func loadGifs(urlRequest: String) {
-        Alamofire.request(urlRequest).responseJSON { (response) in
-            if let responseValue = response.result.value as! [String: Any]? {
-                if let pagination = responseValue["pagination"] as! [String: Any]? {
-                    let responseGifsCount = (pagination["count"] as? Int) ?? 0
-                    if responseGifsCount != 0 {
-                        if let responseGifs = responseValue["data"] as! [[String: Any]]? {
-                            let indexPaths = self.getIndexPaths(offset: self.gifs.count, limit: self.limit)
-                            self.gifs += responseGifs
-                            self.collectionView?.insertItems(at: indexPaths)
+        Alamofire.request(urlRequest).validate().responseJSON { (response) in
+            switch response.result {
+            case .success(_):
+                if let responseValue = response.result.value as! [String: Any]? {
+                    if let pagination = responseValue["pagination"] as! [String: Any]? {
+                        let responseGifsCount = (pagination["count"] as? Int) ?? 0
+                        if responseGifsCount != 0 {
+                            if let responseGifs = responseValue["data"] as! [[String: Any]]? {
+                                let indexPaths = self.getIndexPaths(offset: self.gifs.count, limit: self.limit)
+                                self.gifs += responseGifs
+                                self.baseViewController.collectionView?.insertItems(at: indexPaths)
+                            }
                         }
                     }
                 }
+            case .failure(_):
+                self.baseViewController.showInternetConnectionErrorMessage()
             }
         }
     }
@@ -109,11 +114,4 @@ class GifsContainer {
         return indexPaths
     }
     
-    
-    // MARK: - Static methods
-    
-    static func checkInternerConnection() -> Bool {
-        return NetworkReachabilityManager()!.isReachable
-    }
-
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,15 +17,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     
-    // MARK: - Internal methods
+    // MARK: - App lifecycle
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        let trendingsViewController = TrendingsViewController()
-        let navigationController = UINavigationController(rootViewController: trendingsViewController)
+        
+        let navigationController = UINavigationController(rootViewController: TrendingsViewController())
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         return true
     }
+    
 }
 

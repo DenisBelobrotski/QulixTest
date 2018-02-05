@@ -32,7 +32,7 @@ class TrendingsViewController: BaseViewController, UISearchControllerDelegate, U
         
         self.definesPresentationContext = true
         
-        gifsContainer = GifsContainer(collectionView: collectionView)
+        gifsContainer = GifsContainer(baseViewController: self)
         gifsContainer?.loadNextPage()
         
         searchNavigationController = UINavigationController(rootViewController: searchViewController)

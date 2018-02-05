@@ -26,7 +26,7 @@ class SearchViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        gifsContainer = GifsContainer(collectionView: collectionView)
+        gifsContainer = GifsContainer(baseViewController: self)
         gifsContainer?.loadNextPage(query: query)
         let backButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(goBack))
         navigationItem.leftBarButtonItem = backButton
